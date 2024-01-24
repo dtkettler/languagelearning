@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Scenarios {% endblock %}</h1>
+    {% for scenario in scenarios %}
+        <div class='scenario'>
+            <p><a href="{{ url_for('index') }}{{ scenario['id'] }}"><h3><b>{{ scenario['name'] }}: </b>{{ scenario['goal'] }}</h3></a></p>
+        </div>
+    {% endfor %}
+{% endblock %}

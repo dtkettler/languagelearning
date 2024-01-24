@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Create a new scenario {% endblock %}</h1>
+    <form method="post">
+        <label for="content">Name</label>
+        <br>
+        <textarea name="name"
+                  placeholder="Name of the scenario"
+                  rows="1"
+                  cols="60"
+                  >{{ request.form['content'] }}</textarea>
+        <br>
+        <label for="content">Goal</label>
+        <br>
+        <textarea name="goal"
+                  placeholder="Goal of the scenario"
+                  rows="1"
+                  cols="60"
+                  >{{ request.form['content'] }}</textarea>
+        <br>
+        <label for="content">Details</label>
+        <br>
+        <textarea name="details"
+                  placeholder="Any additional details (optional)"
+                  rows="3"
+                  cols="60"
+                  >{{ request.form['content'] }}</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

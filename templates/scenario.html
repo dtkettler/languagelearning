@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Scenario {% endblock %}</h1>
+    <h3>{{ name }}</h3>
+    <h4>Goal: {{ goal }}</h4>
+    <div class='opening'>
+        <p>{{ details['starting_line'] }}</p>
+    </div>
+    {% for message in messages %}
+        <div class='user'><p>{{ message['user'] }}</p></div>
+        <div class='assistant'><p>{{ message['assistant'] }}</p></div>
+    {% endfor %}
+    <form method="post">
+    <div>
+        <p><textarea name="response"
+                     placeholder="Enter response"
+                     rows="1"
+                     cols="60"
+        >{{ request.form['content'] }}</textarea></p>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+    </form>
+{% endblock %}
