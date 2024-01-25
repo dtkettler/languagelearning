@@ -17,7 +17,8 @@ class GPT:
         self.api_key = config['DEFAULT']['openai_key']
 
         config.read('config.ini')
-        self.model = config['DEFAULT']['model']
+        self.model1 = config['DEFAULT']['model_create']
+        self.model2 = config['DEFAULT']['model_converse']
 
     def completion_with_retries(self, model, messages, temperature=0.5, max_retries=10, functions=None, json=False):
         openai.api_key = self.api_key
@@ -49,7 +50,7 @@ class GPT:
     def run_gpt(self, system_prompt, user_prompt, temperature=0.5, force_long=False, json=False):
         openai.api_key = self.api_key
         completion = self.completion_with_retries(
-            model=self.model,
+            model=self.model1,
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -76,7 +77,7 @@ class GPT:
             total_prompt += message["content"]
 
         completion = self.completion_with_retries(
-            model=self.model,
+            model=self.model2,
             messages=messages,
             temperature=temperature,
             functions=functions
